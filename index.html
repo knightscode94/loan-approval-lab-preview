@@ -3,25 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An evidence-led, reproducible comparison of loan approval classification models.">
-  <title>Loan Approval Lab · Model evaluation</title>
+  <meta name="description" content="Four evidence-led machine-learning studies covering classification and regression.">
+  <title>ML Evaluation Lab · Four model studies</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to report</a>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="Loan Approval Lab home">
-      <span class="brand-mark">LA</span>
-      <span>Loan Approval Lab</span>
+    <a class="brand" href="#portfolio-overview" data-tab-target="overview" aria-label="ML Evaluation Lab home">
+      <span class="brand-mark">ML</span>
+      <span>Evaluation Lab</span>
     </a>
-    <nav aria-label="Report sections">
-      <a href="#data">Data</a><a href="#models">Models</a><a href="#evaluation">Evaluation</a><a href="#governance">Limits</a>
+    <nav class="study-tabs" role="tablist" aria-label="Dataset studies">
+      <button type="button" role="tab" data-tab-target="overview" aria-selected="true">Overview</button>
+      <button type="button" role="tab" data-tab-target="loan" aria-selected="false">Loan</button>
+      <button type="button" role="tab" data-tab-target="bmw" aria-selected="false">BMW sales</button>
+      <button type="button" role="tab" data-tab-target="housing" aria-selected="false">Housing</button>
+      <button type="button" role="tab" data-tab-target="electricity" aria-selected="false">Electricity</button>
     </nav>
     <button id="print-report" class="button button-small" type="button">Print report</button>
   </header>
 
   <main id="main">
-    <section class="hero" id="overview">
+    <div class="tab-panel" data-tab-panel="overview" role="tabpanel">
+      <section class="portfolio-hero" id="portfolio-overview">
+        <p class="eyebrow">Collaborative hackathon · four datasets · two task types</p>
+        <h1>One evaluation lab.<br><em>Four honest answers.</em></h1>
+        <p class="lede">A consistent, leakage-aware comparison of classification and regression approaches—from raw source notes to sealed-test evidence.</p>
+        <div class="portfolio-statline"><span><strong>4</strong> studies</span><span><strong>15</strong> trained candidates</span><span><strong>3</strong> tuned winners</span><span><strong>1</strong> critical leakage finding</span></div>
+      </section>
+      <section class="portfolio-overview-section">
+        <div class="overview-heading"><p class="eyebrow">Executive comparison</p><h2>Results at a glance</h2><p>Scores are not directly comparable across task types. Each card uses the metric appropriate to its own target and baseline.</p></div>
+        <div id="portfolio-cards" class="portfolio-cards"></div>
+        <div class="portfolio-principles">
+          <div><span>01</span><h3>Split first</h3><p>Every learned transform is fitted inside training folds. Validation selects; test confirms once.</p></div>
+          <div><span>02</span><h3>Beat a baseline</h3><p>Accuracy alone is never enough. Classification uses PR-AUC; regression uses RMSE, MAE, and R².</p></div>
+          <div><span>03</span><h3>Reject leakage</h3><p>A perfect score is suspicious when a feature directly defines the label—as BMW sales volume does.</p></div>
+          <div><span>04</span><h3>State the boundary</h3><p>Synthetic, historic, censored, and randomly split data all constrain what a result can claim.</p></div>
+        </div>
+        <div class="overview-matrix" id="overview-matrix"></div>
+      </section>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="loan" role="tabpanel" hidden>
+    <section class="hero" id="loan-overview">
       <div class="hero-copy">
         <p class="eyebrow">Collaborative hackathon · classification track</p>
         <h1>Can machine learning reproduce a loan approval decision?</h1>
@@ -213,9 +239,16 @@ go run .
         </article>
       </div>
     </section>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="bmw" role="tabpanel" hidden><div id="study-bmw" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="housing" role="tabpanel" hidden><div id="study-housing" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="electricity" role="tabpanel" hidden><div id="study-electricity" class="study-render"></div></div>
   </main>
-  <footer><span>Loan Approval Lab</span><p>Educational prototype · synthetic data · human review required</p><a href="#overview">Back to top ↑</a></footer>
+  <footer><span>ML Evaluation Lab</span><p>Educational prototypes · evidence before headlines · human review required</p><a href="#main">Back to top ↑</a></footer>
   <script src="results.js"></script>
+  <script src="portfolio_results.js"></script>
   <script src="app.js"></script>
+  <script src="portfolio.js"></script>
 </body>
 </html>
