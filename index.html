@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Four evidence-led machine-learning studies covering classification and regression.">
-  <title>ML Evaluation Lab · Four model studies</title>
+  <meta name="description" content="Eight evidence-led machine-learning studies covering classification and regression.">
+  <title>ML Evaluation Lab · Eight model studies</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="portfolio.css">
 </head>
@@ -21,6 +21,10 @@
       <button type="button" role="tab" data-tab-target="bmw" aria-selected="false">BMW sales</button>
       <button type="button" role="tab" data-tab-target="housing" aria-selected="false">Housing</button>
       <button type="button" role="tab" data-tab-target="electricity" aria-selected="false">Electricity</button>
+      <button type="button" role="tab" data-tab-target="mtg" aria-selected="false">Magic cards</button>
+      <button type="button" role="tab" data-tab-target="nba" aria-selected="false">NBA 2K20</button>
+      <button type="button" role="tab" data-tab-target="forza" aria-selected="false">Forza</button>
+      <button type="button" role="tab" data-tab-target="dino" aria-selected="false">Dinosaurs</button>
     </nav>
     <button id="print-report" class="button button-small" type="button">Print report</button>
   </header>
@@ -28,10 +32,10 @@
   <main id="main">
     <div class="tab-panel" data-tab-panel="overview" role="tabpanel">
       <section class="portfolio-hero" id="portfolio-overview">
-        <p class="eyebrow">Collaborative hackathon · four datasets · two task types</p>
-        <h1>One evaluation lab.<br><em>Four honest answers.</em></h1>
+        <p class="eyebrow">Collaborative hackathon · eight datasets · two task types</p>
+        <h1>One evaluation lab.<br><em>Eight honest answers.</em></h1>
         <p class="lede">A consistent, leakage-aware comparison of classification and regression approaches—from raw source notes to sealed-test evidence.</p>
-        <div class="portfolio-statline"><span><strong>4</strong> studies</span><span><strong>15</strong> trained candidates</span><span><strong>3</strong> tuned winners</span><span><strong>1</strong> critical leakage finding</span></div>
+        <div class="portfolio-statline"><span><strong>8</strong> studies</span><span><strong>32</strong> trained candidates</span><span><strong>8</strong> tuned winners</span><span><strong>2</strong> leakage safeguards</span></div>
       </section>
       <section class="portfolio-overview-section">
         <div class="overview-heading"><p class="eyebrow">Executive comparison</p><h2>Results at a glance</h2><p>Scores are not directly comparable across task types. Each card uses the metric appropriate to its own target and baseline.</p></div>
@@ -244,10 +248,15 @@ go run .
     <div class="tab-panel" data-tab-panel="bmw" role="tabpanel" hidden><div id="study-bmw" class="study-render"></div></div>
     <div class="tab-panel" data-tab-panel="housing" role="tabpanel" hidden><div id="study-housing" class="study-render"></div></div>
     <div class="tab-panel" data-tab-panel="electricity" role="tabpanel" hidden><div id="study-electricity" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="mtg" role="tabpanel" hidden><div id="study-mtg" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="nba" role="tabpanel" hidden><div id="study-nba" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="forza" role="tabpanel" hidden><div id="study-forza" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="dino" role="tabpanel" hidden><div id="study-dino" class="study-render"></div></div>
   </main>
   <footer><span>ML Evaluation Lab</span><p>Educational prototypes · evidence before headlines · human review required</p><a href="#main">Back to top ↑</a></footer>
   <script src="results.js"></script>
   <script src="portfolio_results.js"></script>
+  <script src="expansion_results.js"></script>
   <script src="app.js"></script>
   <script src="portfolio.js"></script>
 </body>
