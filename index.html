@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-led, reproducible comparison of loan approval classification models.">
+  <title>Loan Approval Lab · Model evaluation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to report</a>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="Loan Approval Lab home">
+      <span class="brand-mark">LA</span>
+      <span>Loan Approval Lab</span>
+    </a>
+    <nav aria-label="Report sections">
+      <a href="#data">Data</a><a href="#models">Models</a><a href="#evaluation">Evaluation</a><a href="#governance">Limits</a>
+    </nav>
+    <button id="print-report" class="button button-small" type="button">Print report</button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <p class="eyebrow">Collaborative hackathon · classification track</p>
+        <h1>Can machine learning reproduce a loan approval decision?</h1>
+        <p class="lede">A leakage-safe comparison of four scikit-learn classifiers on 45,000 synthetic applications—documented from raw data to sealed test.</p>
+        <div class="hero-actions">
+          <a class="button" href="#evaluation">See the final result</a>
+          <a class="text-link" href="#method">Audit the method <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <aside class="verdict" aria-label="Executive verdict">
+        <p class="label">Selected model</p>
+        <h2 id="selected-model">Loading…</h2>
+        <div class="verdict-score"><strong id="hero-ap">—</strong><span>test average precision</span></div>
+        <p id="hero-summary">Loading experiment results…</p>
+        <span class="status"><span></span> Reproducible prototype</span>
+      </aside>
+    </section>
+
+    <section class="metric-strip" aria-label="Key results">
+      <article><span>ROC–AUC</span><strong id="metric-roc">—</strong><small>Ranking quality</small></article>
+      <article><span>F1 score</span><strong id="metric-f1">—</strong><small>Precision–recall balance</small></article>
+      <article><span>Recall</span><strong id="metric-recall">—</strong><small>Approved cases found</small></article>
+      <article><span>Test cases</span><strong id="metric-test-n">—</strong><small>Never used in selection</small></article>
+    </section>
+
+    <section class="report-grid section" id="method">
+      <aside class="section-index">
+        <p class="eyebrow">Study map</p>
+        <ol>
+          <li><a href="#problem"><span>01</span> Problem</a></li>
+          <li><a href="#approach"><span>02</span> Approach</a></li>
+          <li><a href="#data"><span>03</span> Preparation</a></li>
+          <li><a href="#models"><span>04</span> Training</a></li>
+          <li><a href="#tuning"><span>05</span> Tuning</a></li>
+          <li><a href="#evaluation"><span>06</span> Evaluation</a></li>
+        </ol>
+      </aside>
+      <div class="report-content">
+        <article class="chapter" id="problem">
+          <div class="chapter-heading"><span>01</span><div><p class="eyebrow">Define the problem</p><h2>A binary decision-support prototype</h2></div></div>
+          <p class="chapter-intro">The task is supervised binary classification: estimate the probability that an application receives <strong>approval (1)</strong> rather than <strong>rejection (0)</strong>. The useful output is a ranked probability plus a review threshold—not an unexplained yes/no.</p>
+          <div class="two-columns">
+            <div class="callout"><h3>Business value</h3><p>Consistent triage could prioritise clear cases and route uncertain applications to a trained reviewer, reducing handling time while preserving human oversight.</p></div>
+            <div class="callout warning"><h3>Critical boundary</h3><p>The label is an approval decision, not repayment or default. This experiment learns the supplied policy pattern; it does not prove creditworthiness or responsible-lending compliance.</p></div>
+          </div>
+          <div class="definition-grid">
+            <div><span>Unit of analysis</span><strong>One loan application</strong></div>
+            <div><span>Target</span><strong>loan_status</strong></div>
+            <div><span>Primary metric</span><strong>Average precision</strong></div>
+            <div><span>Deployment posture</span><strong>Human decision support</strong></div>
+          </div>
+        </article>
+
+        <article class="chapter" id="approach">
+          <div class="chapter-heading"><span>02</span><div><p class="eyebrow">Choose the approach</p><h2>One pipeline, three serious candidates</h2></div></div>
+          <p class="chapter-intro">A dummy classifier anchors the comparison. Logistic regression tests a transparent linear boundary; random forest tests bagged nonlinear trees; histogram gradient boosting tests sequential nonlinear corrections.</p>
+          <div class="model-cards">
+            <div><span class="model-icon">00</span><h3>Dummy</h3><p>Majority-class sanity check. Any useful model must comfortably beat it.</p></div>
+            <div><span class="model-icon">LR</span><h3>Logistic</h3><p>Fast, interpretable baseline with balanced class weights.</p></div>
+            <div><span class="model-icon">RF</span><h3>Random forest</h3><p>Nonlinear interactions averaged over 350 decision trees.</p></div>
+            <div><span class="model-icon accent">HGB</span><h3>Gradient boost</h3><p>Efficient boosted trees that focus successive rounds on errors.</p></div>
+          </div>
+          <p class="note"><strong>Why average precision?</strong> Only 22.2% of records are approvals. PR-AUC focuses on how well the model retrieves that minority class without being flattered by the many easy true negatives.</p>
+        </article>
+
+        <article class="chapter" id="data">
+          <div class="chapter-heading"><span>03</span><div><p class="eyebrow">Data preparation</p><h2>Clean enough to use, not safe to trust blindly</h2></div></div>
+          <div class="quality-grid">
+            <div><span>Rows</span><strong id="data-rows">—</strong><small>applications</small></div>
+            <div><span>Raw predictors</span><strong>13</strong><small>12 modelled + 1 audit-only</small></div>
+            <div><span>Missing cells</span><strong id="missing-total">—</strong><small>imputer still retained</small></div>
+            <div><span>Duplicates</span><strong id="duplicate-total">—</strong><small>exact rows</small></div>
+          </div>
+          <div class="viz-pair">
+            <figure class="chart-card">
+              <figcaption><span>Class balance</span><strong>A deliberately uneven target</strong></figcaption>
+              <div id="class-balance-chart" class="chart" role="img" aria-label="Target class balance chart"></div>
+              <p class="chart-note">Stratification preserves this ratio in train, validation, and test.</p>
+            </figure>
+            <figure class="chart-card">
+              <figcaption><span>Outlier scan</span><strong>IQR flags are diagnostic, not deletion rules</strong></figcaption>
+              <div id="outlier-chart" class="chart" role="img" aria-label="Outlier rate by numeric feature"></div>
+              <p class="chart-note">The pipeline clips at train-learned 1st/99th percentiles to limit extreme leverage without deleting applicants.</p>
+            </figure>
+          </div>
+
+          <h3 class="subheading">Preparation pipeline</h3>
+          <div class="pipeline" aria-label="Data preparation sequence">
+            <div><b>1</b><span><strong>Stratify</strong><small>70 / 15 / 15</small></span></div><i>→</i>
+            <div><b>2</b><span><strong>Impute</strong><small>median / mode</small></span></div><i>→</i>
+            <div><b>3</b><span><strong>Clip</strong><small>1st–99th pct.</small></span></div><i>→</i>
+            <div><b>4</b><span><strong>Encode</strong><small>one-hot</small></span></div><i>→</i>
+            <div><b>5</b><span><strong>Scale</strong><small>z-score</small></span></div>
+          </div>
+          <div class="two-columns compact">
+            <div><h3>Missing values</h3><p>None were observed. Median and most-frequent imputers remain inside the pipeline so future incomplete rows fail gracefully.</p></div>
+            <div><h3>Feature selection</h3><p>All relevant fields were retained except gender. Gender never reaches the model and is used only to inspect subgroup outcomes.</p></div>
+            <div><h3>Outliers</h3><p>Age and employment contain implausible maxima. Learned winsorisation limits their influence and avoids fitting bounds on validation or test data.</p></div>
+            <div><h3>Leakage control</h3><p>Every learned transform is inside a scikit-learn Pipeline. The split happens first; fitting happens only on the appropriate training fold.</p></div>
+          </div>
+
+          <h3 class="subheading">Partition rationale</h3>
+          <div id="split-chart" class="split-chart" role="img" aria-label="Train validation and test split"></div>
+          <p class="note">70% gives the models 31,500 examples; 15% supports unbiased model and threshold choices; 15% leaves 6,750 untouched cases for one final estimate. A fixed seed makes the experiment repeatable.</p>
+        </article>
+
+        <article class="chapter" id="models">
+          <div class="chapter-heading"><span>04</span><div><p class="eyebrow">Model selection & training</p><h2>Boosted trees lead before tuning</h2></div></div>
+          <p class="chapter-intro">Each candidate received the same training rows and leakage-safe preprocessing. Results below are from the validation set at the standard 0.50 threshold.</p>
+          <figure class="chart-card wide">
+            <figcaption><span>Validation comparison</span><strong>Ranking and classification metrics</strong></figcaption>
+            <div id="model-chart" class="chart chart-tall" role="img" aria-label="Validation metrics by model"></div>
+          </figure>
+          <div class="table-wrap"><table id="model-table"><caption>Detailed validation metrics</caption><thead><tr><th>Model</th><th>Avg precision</th><th>ROC–AUC</th><th>F1</th><th>Precision</th><th>Recall</th><th>Balanced acc.</th></tr></thead><tbody></tbody></table></div>
+          <div class="selection-callout"><span class="stamp">SELECTED</span><div><h3 id="selection-title">Histogram gradient boosting</h3><p>Highest validation average precision, with ROC–AUC used only as a tie-breaker. Selection happened before the test set was opened.</p></div></div>
+        </article>
+
+        <article class="chapter" id="tuning">
+          <div class="chapter-heading"><span>05</span><div><p class="eyebrow">Hyperparameter tuning</p><h2>Structured search, training folds only</h2></div></div>
+          <div class="tuning-summary">
+            <div><span>Method</span><strong>RandomizedSearchCV</strong></div>
+            <div><span>Configurations</span><strong id="tuning-iterations">—</strong></div>
+            <div><span>Cross-validation</span><strong>5 folds</strong></div>
+            <div><span>Optimised metric</span><strong>Average precision</strong></div>
+          </div>
+          <div class="two-columns">
+            <div class="code-card"><div><span>Winning parameters</span><button id="copy-params" type="button">Copy</button></div><pre id="best-params">Loading…</pre></div>
+            <div>
+              <h3>Trade-off readout</h3>
+              <p id="tuning-explanation">The search varies learning speed, tree complexity, iteration count, minimum leaf size, and L2 regularisation. The winner is chosen by mean validation-fold average precision.</p>
+              <div class="cv-score"><span>Best mean CV AP</span><strong id="best-cv-score">—</strong></div>
+            </div>
+          </div>
+          <details><summary>Show the tested range and top configurations</summary><div id="parameter-space" class="parameter-space"></div><div class="table-wrap"><table id="tuning-table"><thead><tr><th>Rank</th><th>CV avg precision</th><th>Variation</th><th>Train–CV gap</th><th>Parameters</th></tr></thead><tbody></tbody></table></div></details>
+          <h3 class="subheading">Threshold selection</h3>
+          <p>The model family and hyperparameters rank applications; the threshold turns scores into decisions. F1 was maximised on validation—not test—producing <strong id="threshold-inline">—</strong>.</p>
+          <div id="threshold-chart" class="chart" role="img" aria-label="Precision recall and F1 by decision threshold"></div>
+        </article>
+
+        <article class="chapter" id="evaluation">
+          <div class="chapter-heading"><span>06</span><div><p class="eyebrow">Final model evaluation</p><h2>One look at the sealed test set</h2></div></div>
+          <p class="chapter-intro">After tuning, the winning pipeline was refit on train + validation. These figures are from the untouched 6,750-row test partition at the locked validation threshold.</p>
+          <div class="final-score-grid">
+            <div class="primary-score"><span>Average precision</span><strong id="test-ap">—</strong><small>1.000 is perfect · 0.222 prevalence baseline</small></div>
+            <div><span>ROC–AUC</span><strong id="test-roc">—</strong><small>ranking across thresholds</small></div>
+            <div><span>F1</span><strong id="test-f1">—</strong><small>precision + recall</small></div>
+            <div><span>Balanced accuracy</span><strong id="test-balanced">—</strong><small>equal class weighting</small></div>
+            <div><span>Brier score</span><strong id="test-brier">—</strong><small>lower is better</small></div>
+          </div>
+          <div class="viz-pair">
+            <figure class="chart-card"><figcaption><span>Decision outcomes</span><strong>Confusion matrix</strong></figcaption><div id="confusion-chart" class="confusion"></div></figure>
+            <figure class="chart-card"><figcaption><span>Threshold-independent</span><strong>ROC & precision–recall curves</strong></figcaption><div id="curve-chart" class="chart" role="img" aria-label="ROC and precision recall curves"></div></figure>
+          </div>
+          <div class="explain-grid">
+            <div><span class="dot tp"></span><strong id="tp-copy">— true approvals</strong><p>Approved cases the model correctly retrieves.</p></div>
+            <div><span class="dot fp"></span><strong id="fp-copy">— false approvals</strong><p>Rejected labels scored above threshold; the costliest error if approval implies risk.</p></div>
+            <div><span class="dot fn"></span><strong id="fn-copy">— missed approvals</strong><p>Approved labels scored below threshold; a potential customer-impact error.</p></div>
+          </div>
+
+          <h3 class="subheading">What drives predictions?</h3>
+          <p>Permutation importance measures the drop in test average precision when one raw feature is shuffled. It is model-specific association, not causality.</p>
+          <div id="importance-chart" class="chart chart-tall" role="img" aria-label="Permutation importance by feature"></div>
+        </article>
+
+        <article class="chapter" id="governance">
+          <div class="chapter-heading"><span>!</span><div><p class="eyebrow">Governance & limitations</p><h2>Good prototype, insufficient evidence for lending</h2></div></div>
+          <div class="governance-banner"><strong>Do not deploy this model for autonomous credit decisions.</strong><p>The study validates technical discrimination on synthetic data; it does not validate lawfulness, real-world outcomes, stability, explainability obligations, or consumer impact.</p></div>
+          <h3 class="subheading">Subgroup diagnostic</h3>
+          <p>Gender was excluded from the model and used only here. Similar rates in this synthetic test split do not prove fairness; proxy variables, label bias, intersectional groups, and real-world drift remain untested.</p>
+          <div class="table-wrap"><table id="fairness-table"><caption>Test metrics by gender (descriptive only)</caption><thead><tr><th>Group</th><th>n</th><th>Actual approval</th><th>Predicted approval</th><th>Precision</th><th>Recall</th></tr></thead><tbody></tbody></table></div>
+          <div id="limitations-list" class="limitations"></div>
+          <h3 class="subheading">Recommended next gates</h3>
+          <ol class="next-steps">
+            <li><span>01</span><div><strong>Replace the target</strong><p>Train against a defined repayment or loss outcome rather than reproducing approvals.</p></div></li>
+            <li><span>02</span><div><strong>Validate prospectively</strong><p>Use temporal and out-of-population holdouts; monitor drift and calibration.</p></div></li>
+            <li><span>03</span><div><strong>Set explicit costs</strong><p>Choose thresholds from documented false-approval and false-rejection impacts.</p></div></li>
+            <li><span>04</span><div><strong>Run formal fairness review</strong><p>Assess protected and intersectional groups with legal, risk, and domain stakeholders.</p></div></li>
+          </ol>
+        </article>
+
+        <article class="chapter reproducibility" id="reproduce">
+          <div><p class="eyebrow">Reproducibility</p><h2>Run the evidence, not a slide deck</h2><p>The report is generated from a versioned JSON artifact. Re-run Python to regenerate it, then serve the embedded website with Go.</p></div>
+          <div class="code-card"><div><span>PowerShell</span></div><pre><code>python analysis/train.py `
+  --data C:\path\to\loan_data.csv
+
+go run .
+# open http://127.0.0.1:8080</code></pre></div>
+          <dl class="run-meta"><div><dt>Seed</dt><dd id="meta-seed">—</dd></div><div><dt>scikit-learn</dt><dd id="meta-sklearn">—</dd></div><div><dt>Generated</dt><dd id="meta-generated">—</dd></div><div><dt>Runtime</dt><dd id="meta-runtime">—</dd></div></dl>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer><span>Loan Approval Lab</span><p>Educational prototype · synthetic data · human review required</p><a href="#overview">Back to top ↑</a></footer>
+  <script src="results.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
