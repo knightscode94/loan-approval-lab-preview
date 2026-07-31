@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Twelve evidence-led machine-learning studies covering classification, regression, and forecasting.">
-  <title>ML Evaluation Lab · Twelve model studies</title>
+  <meta name="description" content="Sixteen evidence-led machine-learning studies covering classification, regression, and forecasting.">
+  <title>ML Evaluation Lab · Sixteen model studies</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="portfolio.css">
 </head>
@@ -29,6 +29,10 @@
       <button type="button" role="tab" data-tab-target="benchmarks" aria-selected="false">Benchmarks</button>
       <button type="button" role="tab" data-tab-target="cyber" aria-selected="false">Cyber</button>
       <button type="button" role="tab" data-tab-target="popularity" aria-selected="false">AI popularity</button>
+      <button type="button" role="tab" data-tab-target="sickle" aria-selected="false">Sickle cell</button>
+      <button type="button" role="tab" data-tab-target="blood" aria-selected="false">Blood cells</button>
+      <button type="button" role="tab" data-tab-target="fifa" aria-selected="false">FIFA ratings</button>
+      <button type="button" role="tab" data-tab-target="chess" aria-selected="false">Chess</button>
     </nav>
     <button id="print-report" class="button button-small" type="button">Print report</button>
   </header>
@@ -36,10 +40,10 @@
   <main id="main">
     <div class="tab-panel" data-tab-panel="overview" role="tabpanel">
       <section class="portfolio-hero" id="portfolio-overview">
-        <p class="eyebrow">Collaborative hackathon · twelve datasets · two task types</p>
-        <h1>One evaluation lab.<br><em>Twelve honest answers.</em></h1>
+        <p class="eyebrow">Collaborative hackathon · sixteen datasets · two task types</p>
+        <h1>One evaluation lab.<br><em>Sixteen honest answers.</em></h1>
         <p class="lede">A consistent, leakage-aware comparison of classification and regression approaches—from raw source notes to sealed-test evidence.</p>
-        <div class="portfolio-statline"><span><strong>12</strong> studies</span><span><strong>48</strong> trained candidates</span><span><strong>12</strong> tuned winners</span><span><strong>5</strong> leakage safeguards</span></div>
+        <div class="portfolio-statline"><span><strong>16</strong> studies</span><span><strong>64</strong> trained candidates</span><span><strong>16</strong> tuned winners</span><span><strong>9</strong> leakage safeguards</span></div>
       </section>
       <section class="portfolio-overview-section">
         <div class="overview-heading"><p class="eyebrow">Executive comparison</p><h2>Results at a glance</h2><p>Scores are not directly comparable across task types. Each card uses the metric appropriate to its own target and baseline.</p></div>
@@ -260,12 +264,17 @@ go run .
     <div class="tab-panel" data-tab-panel="benchmarks" role="tabpanel" hidden><div id="study-benchmarks" class="study-render"></div></div>
     <div class="tab-panel" data-tab-panel="cyber" role="tabpanel" hidden><div id="study-cyber" class="study-render"></div></div>
     <div class="tab-panel" data-tab-panel="popularity" role="tabpanel" hidden><div id="study-popularity" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="sickle" role="tabpanel" hidden><div id="study-sickle" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="blood" role="tabpanel" hidden><div id="study-blood" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="fifa" role="tabpanel" hidden><div id="study-fifa" class="study-render"></div></div>
+    <div class="tab-panel" data-tab-panel="chess" role="tabpanel" hidden><div id="study-chess" class="study-render"></div></div>
   </main>
   <footer><span>ML Evaluation Lab</span><p>Educational prototypes · evidence before headlines · human review required</p><a href="#main">Back to top ↑</a></footer>
   <script src="results.js"></script>
   <script src="portfolio_results.js"></script>
   <script src="expansion_results.js"></script>
   <script src="signal_results.js"></script>
+  <script src="final_results.js"></script>
   <script src="app.js"></script>
   <script src="portfolio.js"></script>
 </body>

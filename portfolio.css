@@ -1,5 +1,5 @@
 [hidden]{display:none!important}
-.study-tabs{display:flex;gap:.25rem;margin-left:auto;padding:.25rem;background:rgba(23,42,42,.06);border-radius:9px}
+.study-tabs{display:flex;flex:1;min-width:0;gap:.25rem;margin-left:auto;padding:.25rem;background:rgba(23,42,42,.06);border-radius:9px;overflow-x:auto;scrollbar-width:thin}
 .study-tabs button{padding:.5rem .72rem;border:0;border-radius:6px;background:transparent;color:var(--muted);font:700 .72rem var(--sans);cursor:pointer;white-space:nowrap}
 .study-tabs button:hover{color:var(--ink);background:rgba(255,255,255,.55)}
 .study-tabs button[aria-selected=true]{background:var(--forest);color:#fff}

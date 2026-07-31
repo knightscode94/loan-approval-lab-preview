@@ -3,8 +3,9 @@
   const portfolio = window.PORTFOLIO_RESULTS;
   const expansion = window.EXPANSION_RESULTS;
   const signals = window.SIGNAL_RESULTS;
+  const finalBatch = window.FINAL_RESULTS;
   const loan = window.LOAN_RESULTS;
-  if (!portfolio || !expansion || !signals || !loan) return;
+  if (!portfolio || !expansion || !signals || !finalBatch || !loan) return;
   const esc = (value) => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
   const label = value => String(value).replaceAll("_", " ").replace(/\b\w/g, c => c.toUpperCase());
   const dec = (value, digits = 3) => Number(value).toFixed(digits);
@@ -18,7 +19,7 @@
     if (unit === "count") return Number(value).toLocaleString("en-GB", {maximumFractionDigits: digits});
     return money(value, digits);
   };
-  const allStudies = [...portfolio.studies, ...expansion.studies, ...signals.studies];
+  const allStudies = [...portfolio.studies, ...expansion.studies, ...signals.studies, ...finalBatch.studies];
   const studies = Object.fromEntries(allStudies.map(study => [study.id, study]));
 
   function activateTab(name, updateHash = true) {
@@ -28,6 +29,7 @@
     document.querySelectorAll("[data-tab-target]").forEach(button => {
       if (button.getAttribute("role") === "tab") button.setAttribute("aria-selected", String(button.dataset.tabTarget === name));
     });
+    document.querySelector(`[role="tab"][data-tab-target="${name}"]`)?.scrollIntoView({inline:"nearest",block:"nearest"});
     if (updateHash) history.replaceState(null, "", `#tab-${name}`);
     window.scrollTo({top: 0, behavior: "auto"});
   }
