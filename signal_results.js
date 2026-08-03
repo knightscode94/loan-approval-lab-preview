@@ -179,7 +179,7 @@ window.SIGNAL_RESULTS = {
         "steps": [
           "Construct lag features from prior periods only",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -1843,7 +1843,7 @@ window.SIGNAL_RESULTS = {
         "feature_selection": "Raw score and max_score are excluded because they exactly calculate score_pct. Model ID and name are excluded, and every row for one model stays in a single partition.",
         "steps": [
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -2967,7 +2967,7 @@ window.SIGNAL_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -3044,7 +3044,7 @@ window.SIGNAL_RESULTS = {
       ],
       "selection": {
         "model": "Random forest",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
@@ -4111,7 +4111,7 @@ window.SIGNAL_RESULTS = {
         "steps": [
           "Construct lag features from prior periods only",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling",
           "Log1p target transform inside each estimator"

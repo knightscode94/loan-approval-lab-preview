@@ -42,7 +42,7 @@
       <section class="portfolio-hero" id="portfolio-overview">
         <p class="eyebrow">Collaborative hackathon · sixteen datasets · two task types</p>
         <h1>One evaluation lab.<br><em>Sixteen honest answers.</em></h1>
-        <p class="lede">A consistent, leakage-aware comparison of classification and regression approaches—from raw source notes to sealed-test evidence.</p>
+        <p class="lede">A consistent, leakage-aware comparison of classification and regression approaches from raw source notes to sealed-test evidence.</p>
         <div class="portfolio-statline"><span><strong>16</strong> studies</span><span><strong>64</strong> trained candidates</span><span><strong>16</strong> tuned winners</span><span><strong>9</strong> leakage safeguards</span></div>
       </section>
       <section class="portfolio-overview-section">
@@ -79,8 +79,8 @@
     </section>
 
     <section class="metric-strip" aria-label="Key results">
-      <article><span>ROC–AUC</span><strong id="metric-roc">—</strong><small>Ranking quality</small></article>
-      <article><span>F1 score</span><strong id="metric-f1">—</strong><small>Precision–recall balance</small></article>
+      <article><span>ROC AUC</span><strong id="metric-roc">—</strong><small>Ranking quality</small></article>
+      <article><span>F1 score</span><strong id="metric-f1">—</strong><small>Precision recall balance</small></article>
       <article><span>Recall</span><strong id="metric-recall">—</strong><small>Approved cases found</small></article>
       <article><span>Test cases</span><strong id="metric-test-n">—</strong><small>Never used in selection</small></article>
     </section>
@@ -150,7 +150,7 @@
           <div class="pipeline" aria-label="Data preparation sequence">
             <div><b>1</b><span><strong>Stratify</strong><small>70 / 15 / 15</small></span></div><i>→</i>
             <div><b>2</b><span><strong>Impute</strong><small>median / mode</small></span></div><i>→</i>
-            <div><b>3</b><span><strong>Clip</strong><small>1st–99th pct.</small></span></div><i>→</i>
+            <div><b>3</b><span><strong>Clip</strong><small>1st 99th pct.</small></span></div><i>→</i>
             <div><b>4</b><span><strong>Encode</strong><small>one-hot</small></span></div><i>→</i>
             <div><b>5</b><span><strong>Scale</strong><small>z-score</small></span></div>
           </div>
@@ -173,8 +173,8 @@
             <figcaption><span>Validation comparison</span><strong>Ranking and classification metrics</strong></figcaption>
             <div id="model-chart" class="chart chart-tall" role="img" aria-label="Validation metrics by model"></div>
           </figure>
-          <div class="table-wrap"><table id="model-table"><caption>Detailed validation metrics</caption><thead><tr><th>Model</th><th>Avg precision</th><th>ROC–AUC</th><th>F1</th><th>Precision</th><th>Recall</th><th>Balanced acc.</th></tr></thead><tbody></tbody></table></div>
-          <div class="selection-callout"><span class="stamp">SELECTED</span><div><h3 id="selection-title">Histogram gradient boosting</h3><p>Highest validation average precision, with ROC–AUC used only as a tie-breaker. Selection happened before the test set was opened.</p></div></div>
+          <div class="table-wrap"><table id="model-table"><caption>Detailed validation metrics</caption><thead><tr><th>Model</th><th>Avg precision</th><th>ROC AUC</th><th>F1</th><th>Precision</th><th>Recall</th><th>Balanced acc.</th></tr></thead><tbody></tbody></table></div>
+          <div class="selection-callout"><span class="stamp">SELECTED</span><div><h3 id="selection-title">Histogram gradient boosting</h3><p>Highest validation average precision, with ROC AUC used only as a tie-breaker. Selection happened before the test set was opened.</p></div></div>
         </article>
 
         <article class="chapter" id="tuning">
@@ -193,7 +193,7 @@
               <div class="cv-score"><span>Best mean CV AP</span><strong id="best-cv-score">—</strong></div>
             </div>
           </div>
-          <details><summary>Show the tested range and top configurations</summary><div id="parameter-space" class="parameter-space"></div><div class="table-wrap"><table id="tuning-table"><thead><tr><th>Rank</th><th>CV avg precision</th><th>Variation</th><th>Train–CV gap</th><th>Parameters</th></tr></thead><tbody></tbody></table></div></details>
+          <details><summary>Show the tested range and top configurations</summary><div id="parameter-space" class="parameter-space"></div><div class="table-wrap"><table id="tuning-table"><thead><tr><th>Rank</th><th>CV avg precision</th><th>Variation</th><th>Train CV gap</th><th>Parameters</th></tr></thead><tbody></tbody></table></div></details>
           <h3 class="subheading">Threshold selection</h3>
           <p>The model family and hyperparameters rank applications; the threshold turns scores into decisions. F1 was maximised on validation—not test—producing <strong id="threshold-inline">—</strong>.</p>
           <div id="threshold-chart" class="chart" role="img" aria-label="Precision recall and F1 by decision threshold"></div>
@@ -204,14 +204,14 @@
           <p class="chapter-intro">After tuning, the winning pipeline was refit on train + validation. These figures are from the untouched 6,750-row test partition at the locked validation threshold.</p>
           <div class="final-score-grid">
             <div class="primary-score"><span>Average precision</span><strong id="test-ap">—</strong><small>1.000 is perfect · 0.222 prevalence baseline</small></div>
-            <div><span>ROC–AUC</span><strong id="test-roc">—</strong><small>ranking across thresholds</small></div>
+            <div><span>ROC AUC</span><strong id="test-roc">—</strong><small>ranking across thresholds</small></div>
             <div><span>F1</span><strong id="test-f1">—</strong><small>precision + recall</small></div>
             <div><span>Balanced accuracy</span><strong id="test-balanced">—</strong><small>equal class weighting</small></div>
             <div><span>Brier score</span><strong id="test-brier">—</strong><small>lower is better</small></div>
           </div>
           <div class="viz-pair">
             <figure class="chart-card"><figcaption><span>Decision outcomes</span><strong>Confusion matrix</strong></figcaption><div id="confusion-chart" class="confusion"></div></figure>
-            <figure class="chart-card"><figcaption><span>Threshold-independent</span><strong>ROC & precision–recall curves</strong></figcaption><div id="curve-chart" class="chart" role="img" aria-label="ROC and precision recall curves"></div></figure>
+            <figure class="chart-card"><figcaption><span>Threshold-independent</span><strong>ROC & precision recall curves</strong></figcaption><div id="curve-chart" class="chart" role="img" aria-label="ROC and precision recall curves"></div></figure>
           </div>
           <div class="explain-grid">
             <div><span class="dot tp"></span><strong id="tp-copy">— true approvals</strong><p>Approved cases the model correctly retrieves.</p></div>

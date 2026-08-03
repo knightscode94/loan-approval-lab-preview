@@ -326,7 +326,7 @@ window.LOAN_RESULTS = {
     ],
     "numeric_pipeline": [
       "Median imputation",
-      "1st–99th percentile clipping learned on training data",
+      "1st to 99th percentile clipping learned on training data",
       "StandardScaler"
     ],
     "categorical_pipeline": [
@@ -1815,7 +1815,7 @@ window.LOAN_RESULTS = {
       ],
       "age_band": [
         {
-          "group": "20–24",
+          "group": "20 to 24",
           "n": 2401,
           "actual_approval_rate": 0.23740108288213244,
           "predicted_approval_rate": 0.256143273635985,
@@ -1823,7 +1823,7 @@ window.LOAN_RESULTS = {
           "recall": 0.8929824561403509
         },
         {
-          "group": "25–29",
+          "group": "25 to 29",
           "n": 2448,
           "actual_approval_rate": 0.21446078431372548,
           "predicted_approval_rate": 0.23284313725490197,
@@ -1831,7 +1831,7 @@ window.LOAN_RESULTS = {
           "recall": 0.8533333333333334
         },
         {
-          "group": "30–39",
+          "group": "30 to 39",
           "n": 1564,
           "actual_approval_rate": 0.21163682864450128,
           "predicted_approval_rate": 0.20140664961636828,

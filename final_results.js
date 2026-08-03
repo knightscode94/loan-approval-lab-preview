@@ -216,7 +216,7 @@ window.FINAL_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -293,7 +293,7 @@ window.FINAL_RESULTS = {
       ],
       "selection": {
         "model": "Histogram gradient boosting",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
@@ -1837,7 +1837,7 @@ window.FINAL_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -1914,7 +1914,7 @@ window.FINAL_RESULTS = {
       ],
       "selection": {
         "model": "Histogram gradient boosting",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
@@ -3901,7 +3901,7 @@ window.FINAL_RESULTS = {
         "feature_selection": "Player identity and every supplied composite/cumulative score are excluded. Match IDs create grouped partitions but do not enter the model; only profile, context, raw actions, and physical workload are retained.",
         "steps": [
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -7117,7 +7117,7 @@ window.FINAL_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -7194,7 +7194,7 @@ window.FINAL_RESULTS = {
       ],
       "selection": {
         "model": "Random forest",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",

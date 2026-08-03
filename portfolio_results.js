@@ -259,7 +259,7 @@ window.PORTFOLIO_RESULTS = {
         "feature_selection": "Sales_Volume excluded because it deterministically defines the target; all remaining pre-outcome fields retained.",
         "steps": [
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -1638,7 +1638,7 @@ window.PORTFOLIO_RESULTS = {
         "feature_selection": "All nine source predictors retained; three domain ratios added to compare districts rather than raw totals alone.",
         "steps": [
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -3248,7 +3248,7 @@ window.PORTFOLIO_RESULTS = {
         "feature_selection": "All eight non-target fields retained after correcting source-header spelling; no identifiers or post-outcome variables found.",
         "steps": [
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]

@@ -659,7 +659,7 @@ window.EXPANSION_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -736,7 +736,7 @@ window.EXPANSION_RESULTS = {
       ],
       "selection": {
         "model": "Histogram gradient boosting",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
@@ -2335,7 +2335,7 @@ window.EXPANSION_RESULTS = {
           "Parse currency and physical units",
           "Derive age at 2020 season",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -3305,7 +3305,7 @@ window.EXPANSION_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -3382,7 +3382,7 @@ window.EXPANSION_RESULTS = {
       ],
       "selection": {
         "model": "Logistic regression",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
@@ -4265,7 +4265,7 @@ window.EXPANSION_RESULTS = {
               "count": 13
             },
             {
-              "value": "Late Cretaceous (Campanian–Maastrichtian)",
+              "value": "Late Cretaceous (Campanian to Maastrichtian)",
               "count": 11
             },
             {
@@ -4285,7 +4285,7 @@ window.EXPANSION_RESULTS = {
               "count": 7
             },
             {
-              "value": "Early Cretaceous (Barremian–Aptian)",
+              "value": "Early Cretaceous (Barremian to Aptian)",
               "count": 6
             },
             {
@@ -4313,7 +4313,7 @@ window.EXPANSION_RESULTS = {
               "count": 5
             },
             {
-              "value": "Early Cretaceous (Aptian–Albian)",
+              "value": "Early Cretaceous (Aptian to Albian)",
               "count": 4
             },
             {
@@ -4329,11 +4329,11 @@ window.EXPANSION_RESULTS = {
               "count": 4
             },
             {
-              "value": "Late Jurassic (Kimmeridgian–Tithonian)",
+              "value": "Late Jurassic (Kimmeridgian to Tithonian)",
               "count": 3
             },
             {
-              "value": "Late Cretaceous (Santonian–Campanian)",
+              "value": "Late Cretaceous (Santonian to Campanian)",
               "count": 3
             },
             {
@@ -4345,11 +4345,11 @@ window.EXPANSION_RESULTS = {
               "count": 2
             },
             {
-              "value": "Early Jurassic (Sinemurian–Pliensbachian)",
+              "value": "Early Jurassic (Sinemurian to Pliensbachian)",
               "count": 2
             },
             {
-              "value": "Late Cretaceous (Cenomanian–Turonian)",
+              "value": "Late Cretaceous (Cenomanian to Turonian)",
               "count": 2
             },
             {
@@ -4373,7 +4373,7 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Late Triassic–Early Jurassic",
+              "value": "Late Triassic to Early Jurassic",
               "count": 1
             },
             {
@@ -4393,7 +4393,7 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Middle Jurassic (Bathonian–Callovian)",
+              "value": "Middle Jurassic (Bathonian to Callovian)",
               "count": 1
             },
             {
@@ -4401,11 +4401,11 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Late Cretaceous (Turonian–Coniacian)",
+              "value": "Late Cretaceous (Turonian to Coniacian)",
               "count": 1
             },
             {
-              "value": "Early Jurassic (Pliensbachian–Toarcian)",
+              "value": "Early Jurassic (Pliensbachian to Toarcian)",
               "count": 1
             },
             {
@@ -4417,11 +4417,11 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Late Jurassic–Late Cretaceous",
+              "value": "Late Jurassic to Late Cretaceous",
               "count": 1
             },
             {
-              "value": "Middle Jurassic (Bajocian–Bathonian)",
+              "value": "Middle Jurassic (Bajocian to Bathonian)",
               "count": 1
             },
             {
@@ -4429,7 +4429,7 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Middle Jurassic (Aalenian–Bajocian)",
+              "value": "Middle Jurassic (Aalenian to Bajocian)",
               "count": 1
             },
             {
@@ -4461,7 +4461,7 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Middle Jurassic (Aalenian–Bathonian)",
+              "value": "Middle Jurassic (Aalenian to Bathonian)",
               "count": 1
             },
             {
@@ -4469,7 +4469,7 @@ window.EXPANSION_RESULTS = {
               "count": 1
             },
             {
-              "value": "Early Jurassic (Hettangian–Sinemurian)",
+              "value": "Early Jurassic (Hettangian to Sinemurian)",
               "count": 1
             },
             {
@@ -5115,7 +5115,7 @@ window.EXPANSION_RESULTS = {
         "steps": [
           "Target ambiguity filtering",
           "Median/mode imputation",
-          "Train-learned 1st–99th percentile clipping",
+          "Train-learned 1st to 99th percentile clipping",
           "One-hot encoding",
           "Standard scaling"
         ]
@@ -5192,7 +5192,7 @@ window.EXPANSION_RESULTS = {
       ],
       "selection": {
         "model": "Histogram gradient boosting",
-        "reason": "Highest validation average precision; ROC–AUC used as a tie-breaker."
+        "reason": "Highest validation average precision; ROC AUC used as a tie-breaker."
       },
       "tuning": {
         "method": "RandomizedSearchCV",
